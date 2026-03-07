@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "961444073992",
+    "project_id": "tamid-beshvil-hatalmidtry1",
+    "storage_bucket": "tamid-beshvil-hatalmidtry1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961444073992:android:96aae933171327e5e737bd",
+        "android_client_info": {
+          "package_name": "com.example.tamid_beshvil_hatalmid_try1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1LuhMgj3xvsRoinbOqofU6DwTyRTB_UU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

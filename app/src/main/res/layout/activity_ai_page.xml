@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:fitsSystemWindows="true">
+
+    <!-- 1. Stylish Top Bar (Baby Pink) -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#F48FB1"
+        app:title="שיחה עם מורה חכם"
+        app:titleTextColor="#FFFFFF"
+        app:menu="@menu/home_menu"
+        android:elevation="4dp" />
+
+    <!-- 2. Chat Conversation List
+         The 'layout_above' property is key: it tells the list to always end where the input starts -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topAppBar"
+        android:layout_above="@+id/inputCard"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical" />
+
+    <!-- 3. Stylish Input Bubble (This moves up with the keyboard) -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/inputCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="4dp"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/messageInput"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="איך אוכל לעזור?"
+                android:background="@android:color/transparent"
+                android:padding="14dp"
+                android:textColor="#424242"
+                android:textSize="16sp"
+                android:inputType="textMultiLine"
+                android:maxLines="4" />
+
+            <!-- Send Button: Pink background with Yellow icon -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/sendButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:src="@android:drawable/ic_menu_send"
+                app:backgroundTint="#F48FB1"
+                app:tint="#FFF9C4"
+                app:fabSize="mini"
+                app:elevation="0dp"
+                app:borderWidth="0dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

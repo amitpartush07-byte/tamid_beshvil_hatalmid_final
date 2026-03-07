@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <!-- Baby Yellow Header Icon -->
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="16dp"
+            android:src="@android:drawable/btn_star_big_on"
+            app:tint="#FFF9C4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="שלום!"
+            android:textColor="#F48FB1"
+            android:textSize="38sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:text="התחברו כדי להתחיל ללמוד"
+            android:textColor="#BDBDBD"
+            android:textSize="16sp" />
+
+        <!-- Email Input with Icon and Baby Pink border -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="אימייל"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxStrokeColor="#F48FB1"
+            app:hintTextColor="#F48FB1"
+            app:startIconDrawable="@android:drawable/ic_dialog_email"
+            app:startIconTint="#FBC02D">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Email_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:textColor="#424242" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Password Input with Icon and Baby Pink border -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:hint="סיסמה"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxStrokeColor="#F48FB1"
+            app:hintTextColor="#F48FB1"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="#FBC02D"
+            app:startIconDrawable="@android:drawable/ic_lock_idle_lock"
+            app:startIconTint="#FBC02D">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Pass_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="#424242" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Login Button (Baby Pink) -->
+        <Button
+            android:id="@+id/SignIn_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#F48FB1"
+            android:text="התחברות"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:cornerRadius="20dp"
+            android:elevation="4dp" />
+
+        <Button
+            android:id="@+id/SignUp_btn"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="הרשמה למשתמש חדש"
+            android:textColor="#FBC02D"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Tamid_beshvil_hatalmid_try1" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Main colors for the app -->
+        <item name="colorPrimary">#F48FB1</item>
+        <item name="colorSecondary">#FFF9C4</item>
+        <item name="android:statusBarColor">#F48FB1</item>
+    </style>
+
+    <style name="Theme.Tamid_beshvil_hatalmid_try1" parent="Base.Theme.Tamid_beshvil_hatalmid_try1" />
+</resources>
