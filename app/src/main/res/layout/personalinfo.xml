@@ -1,183 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:fillViewport="true">
+    android:orientation="vertical">
 
-    <LinearLayout
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp"
-        android:gravity="center_horizontal">
+        android:layout_height="?attr/actionBarSize"
+        android:background="#F48FB1"
+        app:title="תמיד בשביל התלמיד"
+        app:titleTextColor="#FFFFFF"
+        app:menu="@menu/home_menu"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="פרטים אישיים"
-            android:textColor="#F48FB1"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="24dp"/>
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="24dp">
 
-        <!-- Stylish Toggle Group for User Type -->
-        <com.google.android.material.button.MaterialButtonToggleGroup
-            android:id="@+id/ToggleGroupType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            app:singleSelection="true"
-            app:selectionRequired="true"
-            app:checkedButton="@+id/btnStudent">
-
-            <Button
-                android:id="@+id/btnStudent"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="תלמיד"
-                android:paddingHorizontal="30dp"
-                app:strokeColor="#F48FB1"
-                android:textColor="#F48FB1" />
+                android:layout_marginBottom="24dp"
+                android:text="פרטים אישיים"
+                android:textColor="#F48FB1"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/btnTeacher"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            <!-- Toggle Group for User Type -->
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/ToggleGroupType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="מורה"
-                android:paddingHorizontal="30dp"
-                app:strokeColor="#F48FB1"
-                android:textColor="#F48FB1" />
-        </com.google.android.material.button.MaterialButtonToggleGroup>
+                android:layout_marginBottom="24dp"
+                app:checkedButton="@+id/btnStudent"
+                app:selectionRequired="true"
+                app:singleSelection="true">
 
-        <!-- Full Name (Mandatory) -->
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:hint="שם מלא *"
-            app:startIconDrawable="@android:drawable/ic_menu_edit"
-            app:startIconTint="#FBC02D"
-            app:boxStrokeColor="#F48FB1"
-            app:hintTextColor="#F48FB1"
-            app:boxCornerRadiusTopStart="20dp"
-            app:boxCornerRadiusTopEnd="20dp"
-            app:boxCornerRadiusBottomStart="20dp"
-            app:boxCornerRadiusBottomEnd="20dp">
+                <Button
+                    android:id="@+id/btnStudent"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="30dp"
+                    android:text="תלמיד"
+                    android:textColor="#F48FB1"
+                    app:strokeColor="#F48FB1" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/NameTxt"
+                <Button
+                    android:id="@+id/btnTeacher"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="30dp"
+                    android:text="מורה"
+                    android:textColor="#F48FB1"
+                    app:strokeColor="#F48FB1" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <!-- Full Name -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginBottom="12dp"
+                android:hint="שם מלא *"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxStrokeColor="#F48FB1"
+                app:hintTextColor="#F48FB1"
+                app:startIconDrawable="@android:drawable/ic_menu_edit"
+                app:startIconTint="#FBC02D">
 
-        <!-- User ID (Mandatory) -->
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:hint="תעודת זהות *"
-            app:startIconDrawable="@android:drawable/ic_dialog_info"
-            app:startIconTint="#FBC02D"
-            app:boxStrokeColor="#F48FB1"
-            app:hintTextColor="#F48FB1"
-            app:boxCornerRadiusTopStart="20dp"
-            app:boxCornerRadiusTopEnd="20dp"
-            app:boxCornerRadiusBottomStart="20dp"
-            app:boxCornerRadiusBottomEnd="20dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/NameTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/UserIDTxt"
+            <!-- User ID -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginBottom="12dp"
+                android:hint="תעודת זהות *"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxStrokeColor="#F48FB1"
+                app:hintTextColor="#F48FB1"
+                app:startIconDrawable="@android:drawable/ic_dialog_info"
+                app:startIconTint="#FBC02D">
 
-        <!-- Phone Number (Mandatory) -->
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:hint="מספר טלפון *"
-            app:startIconDrawable="@android:drawable/ic_menu_call"
-            app:startIconTint="#FBC02D"
-            app:boxStrokeColor="#F48FB1"
-            app:hintTextColor="#F48FB1"
-            app:boxCornerRadiusTopStart="20dp"
-            app:boxCornerRadiusTopEnd="20dp"
-            app:boxCornerRadiusBottomStart="20dp"
-            app:boxCornerRadiusBottomEnd="20dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/UserIDTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/PNTxt"
+            <!-- Phone Number -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="phone" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginBottom="12dp"
+                android:hint="מספר טלפון *"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxStrokeColor="#F48FB1"
+                app:hintTextColor="#F48FB1"
+                app:startIconDrawable="@android:drawable/ic_menu_call"
+                app:startIconTint="#FBC02D">
 
-        <!-- Grade (Optional) -->
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:hint="כיתה (רשות)"
-            app:startIconDrawable="@android:drawable/btn_star"
-            app:startIconTint="#FBC02D"
-            app:boxStrokeColor="#F48FB1"
-            app:hintTextColor="#F48FB1"
-            app:boxCornerRadiusTopStart="20dp"
-            app:boxCornerRadiusTopEnd="20dp"
-            app:boxCornerRadiusBottomStart="20dp"
-            app:boxCornerRadiusBottomEnd="20dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/PNTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/GradeTxt"
+            <!-- Grade -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:hint="כיתה (רשות)"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxStrokeColor="#F48FB1"
+                app:hintTextColor="#F48FB1"
+                app:startIconDrawable="@android:drawable/btn_star"
+                app:startIconTint="#FBC02D">
 
-        <!-- Subject (Optional) -->
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:hint="מקצוע (רשות)"
-            app:startIconDrawable="@android:drawable/ic_menu_sort_by_size"
-            app:startIconTint="#FBC02D"
-            app:boxStrokeColor="#F48FB1"
-            app:hintTextColor="#F48FB1"
-            app:boxCornerRadiusTopStart="20dp"
-            app:boxCornerRadiusTopEnd="20dp"
-            app:boxCornerRadiusBottomStart="20dp"
-            app:boxCornerRadiusBottomEnd="20dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/GradeTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/SubTxt"
+            <!-- Subject -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:hint="מקצוע (רשות)"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxStrokeColor="#F48FB1"
+                app:hintTextColor="#F48FB1"
+                app:startIconDrawable="@android:drawable/ic_menu_sort_by_size"
+                app:startIconTint="#FBC02D">
 
-        <!-- Update Button -->
-        <Button
-            android:id="@+id/UpdateBtn"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:backgroundTint="#F48FB1"
-            android:text="עדכון פרטים"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:cornerRadius="20dp"
-            android:elevation="4dp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/SubTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </LinearLayout>
-</ScrollView>
+            <!-- Update Button -->
+            <Button
+                android:id="@+id/UpdateBtn"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="#F48FB1"
+                android:elevation="4dp"
+                android:text="עדכון פרטים"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:cornerRadius="20dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

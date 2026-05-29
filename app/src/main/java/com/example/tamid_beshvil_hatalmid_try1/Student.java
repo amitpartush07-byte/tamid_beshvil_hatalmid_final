@@ -2,22 +2,22 @@ package com.example.tamid_beshvil_hatalmid_try1;
 
 public class Student
 {
-    private String Name;
-    private String UserID;
-    private String Email;
-    private String Password;
-    private String Grade;
-    private String Phone;
+    private String name;
+    private String userID;
+    private String email;
+    private String password;
+    private String grade;
+    private String phone;
 
 
     public Student(String name,String userID,String email,String password, String grade, String phone)
     {
-        this.Name=name;
-        this.UserID=userID;
-        this.Email=email;
-        this.Password=password;
-        this.Grade=grade;
-        this.Phone=phone;
+        this.name=name;
+        this.userID=userID;
+        this.email=email;
+        this.password=password;
+        this.grade=grade;
+        this.phone=phone;
     }
 
     public Student()
@@ -26,50 +26,50 @@ public class Student
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
-        Phone = phone;
+        phone = phone;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public String getUserID() {
-        return UserID;
+        return userID;
     }
 
     public void setUserID(String userID) {
-        UserID = userID;
+        userID = userID;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        password = password;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        name = name;
     }
 
     public String getGrade() {
-        return Grade;
+        return grade;
     }
 
     public void setGrade(String grade) {
-        Grade = grade;
+        grade = grade;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        email = email;
     }
 }

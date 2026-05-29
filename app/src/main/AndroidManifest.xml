@@ -44,6 +44,9 @@
         <activity
             android:name=".PersonalInfo_Page"
             android:exported="false" />
+        <activity
+            android:name=".AddQuestionActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"

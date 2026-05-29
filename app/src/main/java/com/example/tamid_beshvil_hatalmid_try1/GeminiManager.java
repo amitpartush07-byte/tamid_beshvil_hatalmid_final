@@ -2,18 +2,18 @@ package com.example.tamid_beshvil_hatalmid_try1;
 
 import com.google.ai.client.generativeai.GenerativeModel;
 import com.google.ai.client.generativeai.java.GenerativeModelFutures;
+// This line MUST be active (no //)
+import com.example.tamid_beshvil_hatalmid_try1.BuildConfig;
 
 public class GeminiManager {
     private static GeminiManager instance;
     private final GenerativeModelFutures model;
 
     private GeminiManager() {
-        // Initialize the model
         GenerativeModel gm = new GenerativeModel(
-                "gemini-1.5-flash",
-                BuildConfig.Gemini_API_Key
+                "gemini-2.5-flash",
+               " AIzaSyAlszzF_aiR24hxP_qaZvIYdCMpIKdpkAw"
         );
-        // Use GenerativeModelFutures for easier Java integration (async)
         this.model = GenerativeModelFutures.from(gm);
     }
 

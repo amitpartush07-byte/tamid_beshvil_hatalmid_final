@@ -47,23 +47,25 @@ public class AI_Solve_Photo_Activity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         btnSolve = findViewById(R.id.btnSolve);
         btnPickImage = findViewById(R.id.btnPickImage);
-        MaterialToolbar topAppBar = findViewById(R.id.topAppBar);
-
         geminiManager = GeminiManager.getInstance();
+
+        MaterialToolbar topAppBar = findViewById(R.id.topAppBar);
 
         topAppBar.setOnMenuItemClickListener(item -> {
             int id = item.getItemId();
+
             if (id == R.id.action_home) {
-                // FIXED: Use AI_Solve_Photo_Activity.this instead of this
-                Intent intent = new Intent(AI_Solve_Photo_Activity.this, Home_Page.class);
+                Intent intent = new Intent(this, Home_Page.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
-                finish();
-                return true;
+            } else if (id == R.id.action_profile) {
+                Intent intent = new Intent(this, PersonalInfo_Page.class);
+                startActivity(intent);
+
             } else if (id == R.id.action_logout) {
-                FirebaseAuth.getInstance().signOut();
-                // FIXED: Use AI_Solve_Photo_Activity.this
-                Intent intent = new Intent(AI_Solve_Photo_Activity.this, SignInUp_Activity.class);
+                // 3. LOGOUT OPTION (Inside dots): Sign out
+                com.google.firebase.auth.FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(this, SignInUp_Activity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();

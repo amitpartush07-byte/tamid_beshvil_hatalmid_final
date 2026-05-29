@@ -17,10 +17,28 @@ public class Home_Page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        topAppBar = findViewById(R.id.topAppBar);
+        MaterialToolbar topAppBar = findViewById(R.id.topAppBar);
+
+        topAppBar.setNavigationOnClickListener(v -> {
+            Intent intent = new Intent(this, Home_Page.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        });
+
         topAppBar.setOnMenuItemClickListener(item -> {
-            if (item.getItemId() == R.id.action_logout) {
-                logoutUser();
+            int id = item.getItemId();
+
+            if (id == R.id.action_profile) {
+                Intent intent = new Intent(this, PersonalInfo_Page.class);
+                startActivity(intent);
+                return true;
+
+            } else if (id == R.id.action_logout) {
+                com.google.firebase.auth.FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(this, SignInUp_Activity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
                 return true;
             }
             return false;

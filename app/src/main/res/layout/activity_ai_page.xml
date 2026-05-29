@@ -14,7 +14,7 @@
         app:title="שיחה עם מורה חכם"
         app:titleTextColor="#FFFFFF"
         app:menu="@menu/home_menu"
-        android:elevation="4dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- 2. Chat Conversation List
          The 'layout_above' property is key: it tells the list to always end where the input starts -->

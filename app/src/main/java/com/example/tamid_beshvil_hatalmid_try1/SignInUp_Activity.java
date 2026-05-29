@@ -1,71 +1,93 @@
 package com.example.tamid_beshvil_hatalmid_try1;
 
-import static com.example.tamid_beshvil_hatalmid_try1.FBRef.refAuth;
-
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;import android.widget.Button;
-import android.widget.EditText;
+import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SignInUp_Activity extends AppCompatActivity {
 
-    private EditText Email, Pass;
-    private Button SignUp, SignIn;
+    private TextInputEditText emailTxt, passTxt;
+    private Button btnSignUp, btnSignIn;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_signinup);
 
-        Email = findViewById(R.id.Email_txt);
-        Pass = findViewById(R.id.Pass_txt);
-        SignUp = findViewById(R.id.SignUp_btn);
-        SignIn = findViewById(R.id.SignIn_btn);
+        mAuth = FirebaseAuth.getInstance();
+        emailTxt = findViewById(R.id.Email_txt);
+        passTxt = findViewById(R.id.Pass_txt);
+        btnSignUp = findViewById(R.id.SignUp_btn);
+        btnSignIn = findViewById(R.id.SignIn_btn);
 
-
-        SignIn.setOnClickListener(view -> signInUser());
-        SignUp.setOnClickListener(view -> signUpUser());
+        btnSignIn.setOnClickListener(v -> loginUser());
+        btnSignUp.setOnClickListener(v -> registerUser());
     }
 
-    private void signUpUser() {
-        String emailStr = Email.getText().toString().trim();
-        String passStr = Pass.getText().toString().trim();
+    private void registerUser() {
+        String email = emailTxt.getText().toString().trim();
+        String password = passTxt.getText().toString().trim();
 
-        if (emailStr.isEmpty() || passStr.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "אנא מלא את כל השדות", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        refAuth.createUserWithEmailAndPassword(emailStr, passStr)
+        mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        Toast.makeText(this, "נרשמת בהצלחה!", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(this, PersonalInfo_Page.class));
-                        finish();
+                        // Success: Show stylish Alert
+                        showSuccessAlert();
                     } else {
                         Toast.makeText(this, "שגיאה בהרשמה: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
     }
 
-    private void signInUser() {
-        String emailStr = Email.getText().toString().trim();
-        String passStr = Pass.getText().toString().trim();
+    private void loginUser() {
+        String email = emailTxt.getText().toString().trim();
+        String password = passTxt.getText().toString().trim();
 
-        if (emailStr.isEmpty() || passStr.isEmpty()) {
-            Toast.makeText(this, "אנא הזן אימייל וסיסמה", Toast.LENGTH_SHORT).show();
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "אנא הזן פרטי התחברות", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        refAuth.signInWithEmailAndPassword(emailStr, passStr)
+        mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         startActivity(new Intent(this, Home_Page.class));
                         finish();
                     } else {
-                        Toast.makeText(this, "התחברות נכשלה", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "התחברות נכשלה: בדוק אימייל וסיסמה", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void showSuccessAlert() {
+        new MaterialAlertDialogBuilder(this)
+                .setTitle("ברוכים הבאים!")
+                .setMessage("החשבון שלך נוצר בהצלחה. כעת נעבור למסך השלמת הפרטים האישיים.")
+                .setCancelable(false)
+                .setPositiveButton("המשך", new DialogInterface.OnClickListener() {
+
+
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(SignInUp_Activity.this, PersonalInfo_Page.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                })
+                .show();
     }
 }

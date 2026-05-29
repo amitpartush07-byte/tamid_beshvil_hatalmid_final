@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#F48FB1"
+        app:title="הוספת שאלה למאגר"
+        app:titleTextColor="#FFFFFF"
+        app:menu="@menu/home_menu" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="בחר מקצוע:"
+                android:textColor="#F48FB1"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerSubject"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Title -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="כותרת (שם הספר/נושא) *"
+                app:boxCornerRadiusBottomEnd="20dp" app:boxCornerRadiusTopStart="20dp"
+                app:boxStrokeColor="#F48FB1" app:hintTextColor="#F48FB1">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTitle"
+                    android:layout_width="match_parent" android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Description -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="12dp" android:hint="תיאור (שם המבחן/שנה) *"
+                app:boxCornerRadiusBottomEnd="20dp" app:boxCornerRadiusTopStart="20dp"
+                app:boxStrokeColor="#F48FB1" app:hintTextColor="#F48FB1">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editDescription"
+                    android:layout_width="match_parent" android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Question Link -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="12dp" android:hint="קישור לשאלון *"
+                app:boxCornerRadiusBottomEnd="20dp" app:boxCornerRadiusTopStart="20dp"
+                app:boxStrokeColor="#F48FB1" app:hintTextColor="#F48FB1">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editExamLink"
+                    android:layout_width="match_parent" android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Solution Link -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="12dp" android:hint="קישור לפתרון המלא *"
+                app:boxCornerRadiusBottomEnd="20dp" app:boxCornerRadiusTopStart="20dp"
+                app:boxStrokeColor="#F48FB1" app:hintTextColor="#F48FB1">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editSolveLink"
+                    android:layout_width="match_parent" android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Video Link (Optional) -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="12dp" android:hint="קישור לוידאו (רשות)"
+                app:boxCornerRadiusBottomEnd="20dp" app:boxCornerRadiusTopStart="20dp"
+                app:boxStrokeColor="#F48FB1" app:hintTextColor="#F48FB1">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editVideoLink"
+                    android:layout_width="match_parent" android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="#F48FB1"
+                android:text="פרסם למאגר"
+                android:textStyle="bold"
+                app:cornerRadius="20dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

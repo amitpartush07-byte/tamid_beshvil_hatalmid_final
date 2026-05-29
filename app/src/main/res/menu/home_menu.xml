@@ -2,7 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- Home Icon -->
+    <!-- THE PLUS BUTTON (Hidden by default) -->
+    <item
+        android:id="@+id/action_add_question"
+        android:title="הוספת שאלה"
+        android:icon="@android:drawable/ic_input_add"
+        android:visible="false"
+        app:iconTint="#FFF9C4"
+        app:showAsAction="always" />
+
+    <!-- Your existing Home icon -->
     <item
         android:id="@+id/action_home"
         android:title="בית"
@@ -10,12 +19,14 @@
         app:iconTint="#FFF9C4"
         app:showAsAction="always" />
 
-    <!-- Logout Icon -->
+    <!-- Existing 3-dot options -->
+    <item
+        android:id="@+id/action_profile"
+        android:title="פרופיל"
+        app:showAsAction="never" />
+
     <item
         android:id="@+id/action_logout"
         android:title="התנתק"
-        android:icon="@drawable/ic_logout"
-        app:iconTint="#FFF9C4"
         app:showAsAction="never" />
-
 </menu>

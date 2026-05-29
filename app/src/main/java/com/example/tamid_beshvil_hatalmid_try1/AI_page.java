@@ -42,7 +42,6 @@ public class AI_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ai_page);
 
-        // 1. Initialize Views
         recyclerView = findViewById(R.id.chatRecyclerView);
         messageInput = findViewById(R.id.messageInput);
         sendButton = findViewById(R.id.sendButton);
@@ -52,26 +51,35 @@ public class AI_page extends AppCompatActivity {
         messageList = new ArrayList<>();
         adapter = new ChatAdapter(messageList);
 
-        // 2. Setup RecyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        // 3. Menu Logic
+        MaterialToolbar topAppBar = findViewById(R.id.topAppBar);
+
         topAppBar.setOnMenuItemClickListener(item -> {
-            if (item.getItemId() == R.id.action_home) {
-                startActivity(new Intent(this, Home_Page.class));
-                return true;
-            } else if (item.getItemId() == R.id.action_logout) {
-                FirebaseAuth.getInstance().signOut();
+            int id = item.getItemId();
+
+            if (id == R.id.action_home) {
+                Intent intent = new Intent(this, Home_Page.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            } else if (id == R.id.action_profile) {
+                Intent intent = new Intent(this, PersonalInfo_Page.class);
+                startActivity(intent);
+
+            } else if (id == R.id.action_logout) {
+                // 3. LOGOUT OPTION (Inside dots): Sign out
+                com.google.firebase.auth.FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(this, SignInUp_Activity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                finish();
                 return true;
             }
             return false;
         });
 
-        // 4. Send Button Logic
+
         sendButton.setOnClickListener(v -> {
             String text = messageInput.getText().toString().trim();
             if (!text.isEmpty()) {
@@ -81,7 +89,6 @@ public class AI_page extends AppCompatActivity {
             }
         });
 
-        // Inside onCreate:
         messageInput.setOnFocusChangeListener((v, hasFocus) -> {
             if (hasFocus && messageList != null && messageList.size() > 0) {
                 recyclerView.postDelayed(() -> {
@@ -118,7 +125,6 @@ public class AI_page extends AppCompatActivity {
         }, this.getMainExecutor());
     }
 
-    // --- INTERNAL ADAPTER (No extra file needed) ---
     private class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder> {
         private List<ChatMessage> list;
 
@@ -127,7 +133,6 @@ public class AI_page extends AppCompatActivity {
         @NonNull
         @Override
         public ChatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            // We use a simple built-in Android layout to avoid creating new XML files
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(android.R.layout.simple_list_item_1, parent, false);
             return new ChatViewHolder(view);
@@ -139,7 +144,6 @@ public class AI_page extends AppCompatActivity {
             String prefix = msg.isUser ? "אני: " : "מורה חכם: ";
             holder.textView.setText(prefix + msg.text);
 
-            // Basic styling based on sender
             holder.textView.setTextColor(msg.isUser ? 0xFFF48FB1 : 0xFF333333);
         }
 
@@ -155,7 +159,6 @@ public class AI_page extends AppCompatActivity {
         }
     }
 
-    // --- MESSAGE MODEL (No extra file needed) ---
     private static class ChatMessage {
         String text;
         boolean isUser;
