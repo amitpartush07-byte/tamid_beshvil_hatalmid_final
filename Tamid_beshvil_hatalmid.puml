@@ -1,0 +1,246 @@
+@startuml
+class com.example.tamid_beshvil_hatalmid_try1.Teacher {
+- String Name
+- String UserID
+- String Email
+- String Password
+- String Subject
+- String Phone
++ String getPhone()
++ void setPhone(String)
++ String getName()
++ void setName(String)
++ String getEmail()
++ void setEmail(String)
++ String getUserID()
++ String getPassword()
++ void setUserID(String)
++ void setSubject(String)
++ String getSubject()
++ void setPassword(String)
+}
+
+
+class com.example.tamid_beshvil_hatalmid_try1.FBRef {
++ {static} FirebaseAuth refAuth
++ {static} FirebaseDatabase FBDB
++ {static} DatabaseReference refStudent
++ {static} DatabaseReference refTeacher
+}
+
+class com.example.tamid_beshvil_hatalmid_try1.GeminiManager {
+- {static} GeminiManager instance
+- GenerativeModelFutures model
++ {static} GeminiManager getInstance()
++ GenerativeModelFutures getModel()
+}
+
+
+class com.example.tamid_beshvil_hatalmid_try1.QuestionItem {
+- String subject
+- String desc
+- String examName
+- String solutionLink
+- String videoLink
+- String examLink
+- String ownerId
+- String key
++ String getSubject()
++ String getDesc()
++ String getExamName()
++ String getSolutionLink()
++ String getVideoLink()
++ String getExamLink()
++ String getOwnerId()
++ String getKey()
++ void setKey(String)
+}
+
+
+class com.example.tamid_beshvil_hatalmid_try1.AI_page {
+- RecyclerView recyclerView
+- EditText messageInput
+- FloatingActionButton sendButton
+- MaterialToolbar topAppBar
+- List<ChatMessage> messageList
+- ChatAdapter adapter
+- GeminiManager geminiManager
+# void onCreate(Bundle)
+- void addMessage(String,boolean)
+- void askGemini(String)
+}
+
+
+class com.example.tamid_beshvil_hatalmid_try1.AI_page$ChatAdapter {
+- List<ChatMessage> list
++ ChatViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(ChatViewHolder,int)
++ int getItemCount()
+}
+
+
+class com.example.tamid_beshvil_hatalmid_try1.AI_page$ChatAdapter$ChatViewHolder {
+~ TextView textView
+}
+
+class com.example.tamid_beshvil_hatalmid_try1.AI_page$ChatMessage {
+~ String text
+~ boolean isUser
+}
+
+class com.example.tamid_beshvil_hatalmid_try1.PersonalInfo_Page {
+- TextInputEditText fullName
+- Button update
+- MaterialButtonToggleGroup toggleGroup
+# void onCreate(Bundle)
+- void loadExistingUserData()
+- void updateInfo()
+- void showCompletionAlert()
+- void goHome()
+}
+
+
+class com.example.tamid_beshvil_hatalmid_try1.Home_Page {
+- Button photoB
+- MaterialToolbar topAppBar
+# void onCreate(Bundle)
+- void logoutUser()
+}
+
+
+class com.example.tamid_beshvil_hatalmid_try1.ExampleInstrumentedTest {
++ void useAppContext()
+}
+
+class com.example.tamid_beshvil_hatalmid_try1.SignInUp_Activity {
+- TextInputEditText emailTxt
+- Button btnSignUp
+- FirebaseAuth mAuth
+# void onCreate(Bundle)
+- void registerUser()
+- void loginUser()
+- void showSuccessAlert()
+}
+
+
+class com.example.tamid_beshvil_hatalmid_try1.BuildConfig {
++ {static} boolean DEBUG
++ {static} String APPLICATION_ID
++ {static} String BUILD_TYPE
++ {static} int VERSION_CODE
++ {static} String VERSION_NAME
++ {static} String Gemini_API_Key
+}
+
+class com.example.tamid_beshvil_hatalmid_try1.Student {
+- String name
+- String userID
+- String email
+- String password
+- String grade
+- String phone
++ String getPhone()
++ void setPhone(String)
++ String getEmail()
++ String getUserID()
++ void setUserID(String)
++ String getPassword()
++ void setPassword(String)
++ String getName()
++ void setName(String)
++ String getGrade()
++ void setGrade(String)
++ void setEmail(String)
+}
+
+
+class com.example.tamid_beshvil_hatalmid_try1.QuestionBillActivity {
+- List<QuestionItem> mathList
+- QuestionBillAdapter mathAdapter
+- ActivityResultLauncher<Intent> addLauncher
+- DatabaseReference dbRef
+- boolean isUserTeacher
+# void onCreate(Bundle)
+- void setupLauncher()
+- void loadFirebaseData()
+- void refreshAdapters()
++ void onDeleteClick(QuestionItem)
+- void resetToHardcoded()
+- void checkTeacher()
+- void initLists()
+- void setupToolbarLogic()
+}
+
+
+class com.example.tamid_beshvil_hatalmid_try1.ExampleUnitTest {
++ void addition_isCorrect()
+}
+
+class com.example.tamid_beshvil_hatalmid_try1.AI_Solve_Photo_Activity {
+- ImageView ivQuestion
+- TextView tvSolution
+- ProgressBar progressBar
+- Button btnSolve
+- Bitmap selectedBitmap
+- GeminiManager geminiManager
+# void onCreate(Bundle)
+- void handleImageSelection(Uri)
+- void solveWithAI()
+}
+
+
+interface com.example.tamid_beshvil_hatalmid_try1.GeminiCallBack {
++ void OnSuccess(String)
++ void OnError(Throwable)
+}
+
+class com.example.tamid_beshvil_hatalmid_try1.QuestionBillAdapter {
+- List<QuestionItem> items
+- Context context
+- boolean isTeacher
+- OnDeleteClickListener deleteListener
++ ViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(ViewHolder,int)
+- void openUrl(String)
++ int getItemCount()
+}
+
+
+interface com.example.tamid_beshvil_hatalmid_try1.QuestionBillAdapter$OnDeleteClickListener {
+~ void onDeleteClick(QuestionItem)
+}
+
+class com.example.tamid_beshvil_hatalmid_try1.QuestionBillAdapter$ViewHolder {
+~ TextView subject
+~ Button btnSolution
+~ ImageButton btnDelete
+}
+
+class com.example.tamid_beshvil_hatalmid_try1.AddQuestionActivity {
+- TextInputEditText editTitle
+- Spinner spinnerSubject
+# void onCreate(Bundle)
+- void setupToolbarLogic()
+}
+
+
+
+
+androidx.appcompat.app.AppCompatActivity <|-- com.example.tamid_beshvil_hatalmid_try1.AI_page
+com.example.tamid_beshvil_hatalmid_try1.AI_page +.. com.example.tamid_beshvil_hatalmid_try1.AI_page$ChatAdapter
+com.example.tamid_beshvil_hatalmid_try1.Adapter <|-- com.example.tamid_beshvil_hatalmid_try1.AI_page$ChatAdapter
+com.example.tamid_beshvil_hatalmid_try1.AI_page$ChatAdapter +.. com.example.tamid_beshvil_hatalmid_try1.AI_page$ChatAdapter$ChatViewHolder
+com.example.tamid_beshvil_hatalmid_try1.ViewHolder <|-- com.example.tamid_beshvil_hatalmid_try1.AI_page$ChatAdapter$ChatViewHolder
+com.example.tamid_beshvil_hatalmid_try1.AI_page +.. com.example.tamid_beshvil_hatalmid_try1.AI_page$ChatMessage
+androidx.appcompat.app.AppCompatActivity <|-- com.example.tamid_beshvil_hatalmid_try1.PersonalInfo_Page
+androidx.appcompat.app.AppCompatActivity <|-- com.example.tamid_beshvil_hatalmid_try1.Home_Page
+androidx.appcompat.app.AppCompatActivity <|-- com.example.tamid_beshvil_hatalmid_try1.SignInUp_Activity
+com.example.tamid_beshvil_hatalmid_try1.OnDeleteClickListener <|.. com.example.tamid_beshvil_hatalmid_try1.QuestionBillActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.tamid_beshvil_hatalmid_try1.QuestionBillActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.tamid_beshvil_hatalmid_try1.AI_Solve_Photo_Activity
+com.example.tamid_beshvil_hatalmid_try1.Adapter <|-- com.example.tamid_beshvil_hatalmid_try1.QuestionBillAdapter
+com.example.tamid_beshvil_hatalmid_try1.QuestionBillAdapter +.. com.example.tamid_beshvil_hatalmid_try1.QuestionBillAdapter$OnDeleteClickListener
+com.example.tamid_beshvil_hatalmid_try1.QuestionBillAdapter +.. com.example.tamid_beshvil_hatalmid_try1.QuestionBillAdapter$ViewHolder
+com.example.tamid_beshvil_hatalmid_try1.ViewHolder <|-- com.example.tamid_beshvil_hatalmid_try1.QuestionBillAdapter$ViewHolder
+androidx.appcompat.app.AppCompatActivity <|-- com.example.tamid_beshvil_hatalmid_try1.AddQuestionActivity
+@enduml
