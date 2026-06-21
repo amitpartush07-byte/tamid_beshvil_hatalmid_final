@@ -11,7 +11,8 @@ public class GeminiManager {
 
     private GeminiManager() {
         GenerativeModel gm = new GenerativeModel(
-                "gemini-2.5-flash",BuildConfig.Gemini_API_Key);
+                "gemini-2.5-flash",
+                BuildConfig.Gemini_API_Key);
         this.model = GenerativeModelFutures.from(gm);
     }
 
