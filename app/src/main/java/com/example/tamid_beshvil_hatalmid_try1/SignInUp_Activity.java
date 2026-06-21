@@ -45,7 +45,6 @@ public class SignInUp_Activity extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        // Success: Show stylish Alert
                         showSuccessAlert();
                     } else {
                         Toast.makeText(this, "שגיאה בהרשמה: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();

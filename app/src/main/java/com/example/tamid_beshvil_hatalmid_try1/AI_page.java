@@ -68,7 +68,6 @@ public class AI_page extends AppCompatActivity {
                 startActivity(intent);
 
             } else if (id == R.id.action_logout) {
-                // 3. LOGOUT OPTION (Inside dots): Sign out
                 com.google.firebase.auth.FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(this, SignInUp_Activity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
